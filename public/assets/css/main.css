@@ -1,0 +1,208 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*-----------RESET----------*/
+
+@font-face{
+	font-family: "montserrat extrabold";
+	src:url(../fonts/Montserrat-ExtraBold.otf);
+}
+
+@font-face{
+	font-family: "montserrat bold";
+	src:url(../fonts/Montserrat-Bold.otf);
+}
+
+@font-face{
+	font-family: "montserrat reguler";
+	src:url(../fonts/Montserrat-Medium.otf);
+}
+
+body {
+	background-color: #FAF8F3;
+}
+
+.heading {
+	text-align: center;
+	color: #907f88;
+	padding-top: 50px;
+}
+
+.heading h1 {
+	font-family: "montserrat extrabold";
+	text-transform: uppercase;
+	font-size: 40px;
+}
+
+.heading p {
+	font-family: "montserrat reguler";
+	margin: 20px 0px 65px 0px;
+	font-size: 24px;
+	line-height: 120%;
+}
+
+.footer {
+	text-align: center;
+	padding: 50px 0px;
+}
+
+.footer input, .coba input {
+	font-family: "montserrat reguler";
+	border: 5px solid #907f88;
+	outline: none;
+	padding: 5px 10px;
+	font-size: 24px;
+	text-align: center;
+	color: #907f88;
+	transition: .2s ease;
+}
+
+.coba input:focus {
+	border: 5px solid #63374e;
+	color: #63374e;
+}
+
+.footer button, .coba button {
+	font-family: "montserrat reguler";
+	border: 5px solid #907f88;
+	background-color: #907f88;
+	color: #FAF8F3;
+	outline: none;
+	padding: 5px 10px;
+	font-size: 24px;
+	margin: 10px;
+	transition: .3s ease;
+}
+
+.footer button:hover, .coba button:hover {
+	cursor: pointer;
+	border: 5px solid #63374e;
+	background-color: #63374e;
+}
+
+.coba {
+	background-image: url('../img/computer.png');
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 50vh;
+	text-align: center;
+}
+
+.coba .content {
+	position: relative;
+	top: 15vh;
+}
+
+.error {
+	font-family: "montserrat reguler";
+	font-size: 24px;
+	width: 30%;
+	margin: auto;
+	background-color: #d26e61;
+	padding:10px;
+	color: #FAF8F3;
+}
+
+.success {
+	font-family: "montserrat reguler";
+	font-size: 24px;
+	width: 30%;
+	margin: auto;
+	background-color:#61d293;
+	padding:10px;
+	color: #FAF8F3;
+}
+
+.section {
+	font-family: "montserrat reguler";
+}
+
+.edu-bg {
+	background-image: url('../img/edu-bg.png');
+	background-repeat: repeat;
+}
+
+.edu-bg .heading {
+	color: #333;
+	padding-top: 30px;
+}
+
+@media screen and (min-width: 768px) {
+	.img-1 {
+		display: block;
+	}
+	.img-2 {
+		display: none;
+	}
+	.footer button:hover {
+		transform: translateX(10px);
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.img-1 {
+		display: none;
+	}
+	.img-2 {
+		display: block;
+	}
+	.heading p {
+		font-size: 1.25em;
+		line-height: 150%;
+	}
+	.heading p br {
+		display: none;
+	}
+	.coba {
+		background-image: url('../img/computer-2.png');
+		background-size: 120%;
+	}
+	.coba input {
+		width: 70%;
+	}
+	.coba .content {
+		top: 16vh;
+	}
+}

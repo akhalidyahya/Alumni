@@ -1,0 +1,48 @@
+.btn {
+	background-color: #907f88;
+}
+
+.btn:hover {
+	background-color: #63374e !important;
+}
+
+.main-color {
+	background-color: #907f88;
+}
+
+.main-color-text {
+	color: #907f88 !important;
+}
+
+.red {
+  background-color: #d26e61 !important;
+}
+
+.red-text {
+  color: #d26e61 !important;
+}
+
+.blue {
+	background-color: #d2e4e6 !important;
+}
+
+.blue-text {
+	color: #d2e4e6 !important;
+}
+
+.input-field .prefix.active {
+  color: #63374e;
+}
+
+.input-field input:focus + label, .input-field textarea:focus + label{
+     color: #63374e !important;
+}
+
+.input-field input:focus, .input-field textarea:focus{
+    border-bottom: 1.2px solid #63374e !important;
+    /*box-shadow: 0 1px 0 0 #000;*/
+}
+
+.input-field select option {
+	color: #907f88 !important;
+}
