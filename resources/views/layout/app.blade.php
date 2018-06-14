@@ -117,7 +117,7 @@
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="{{asset('admin/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+                <img src="{!!asset('upload/profile/').'/'.Session::get('foto')!!}" class="img-circle" alt="User Image">
                 <!-- <i class="fa fa-user-circle" style="font-size: 70px; color: #fff;"></i> -->
                 <p>
                   {{Session::get('nama')}} <br>
@@ -215,14 +215,13 @@
       @elseif(Session::get('role') == 1)
       <li class="treeview {{ (\Request::route()->getName() == '') ? 'active' : ''}}">
         <a href="#">
-          <i class="fa fa-book"></i> <span>Akademik</span>
+          <i class="fa fa-book"></i> <span>Info Akademik</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
           <li class="{{ (\Request::route()->getName() == '') ? 'active' : ''}}"><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Lomba</a></li>
-          <li class="{{ (\Request::route()->getName() == '') ? 'active' : ''}}"><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Beasiswa</a></li>
           <li class="{{ (\Request::route()->getName() == '') ? 'active' : ''}}"><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Data Riset</a></li>
           <li class="{{ (\Request::route()->getName() == '') ? 'active' : ''}}"><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Entrepreneur</a></li>
           <li class="{{ (\Request::route()->getName() == '') ? 'active' : ''}}"><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Incubator</a></li>
@@ -238,9 +237,17 @@
         </a>
         <ul class="treeview-menu">
           <li class="{{ (\Request::route()->getName() == '') ? 'active' : ''}}"><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Profile</a></li>
-          <li class="{{ (\Request::route()->getName() == '') ? 'active' : ''}}"><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Lowongan</a></li>
-          <li class="{{ (\Request::route()->getName() == '') ? 'active' : ''}}"><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Info</a></li>
         </ul>
+      </li>
+      <li class="{{ (\Request::route()->getName() == '') ? 'active' : ''}}">
+        <a href="{{url('')}}">
+          <i class="fa fa-file"></i> <span>Beasiswa</span>
+        </a>
+      </li>
+      <li class="{{ (\Request::route()->getName() == '') ? 'active' : ''}}">
+        <a href="{{url('')}}">
+          <i class="fa fa-newspaper-o"></i> <span>Lowongan</span>
+        </a>
       </li>
       <li class="{{ (\Request::route()->getName() == '') ? 'active' : ''}}">
         <a href="{{url('')}}">

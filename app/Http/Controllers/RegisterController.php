@@ -26,6 +26,7 @@ class RegisterController extends Controller
           'skripsi' => $request->skripsi,
           'no_telp' => $request->telp,
           'email' => $request->email,
+          'foto' => 'defaultprofile.jpg',
           'instagram' => $request->instagram,
           'Web' => $request->web,
           'skripsi' => $request->skripsi,
