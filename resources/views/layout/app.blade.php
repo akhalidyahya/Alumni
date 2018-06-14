@@ -166,6 +166,8 @@
           <i class="fa fa-home"></i> <span>Dashboard</span>
         </a>
       </li>
+
+      <!-- Sidebar untuk Admin -->
       <li class="{{ (\Request::route()->getName() == 'alumni') ? 'active' : ''}}">
         <a href="{{url('alumni')}}">
           <i class="fa fa-users"></i> <span>Alumni</span>
@@ -181,12 +183,33 @@
           <i class="fa fa-file"></i> <span>Lowongan</span>
         </a>
       </li>
+      <li class="{{ (\Request::route()->getName() == 'beasiswa') ? 'active' : ''}}">
+        <a href="{{url('beasiswa')}}">
+          <i class="fa fa-file"></i> <span>Beasiswa</span>
+        </a>
+      </li>
+      <li class="treeview {{ (\Request::route()->getName() == '') ? 'active' : ''}}">
+        <a href="#">
+          <i class="fa fa-info"></i> <span>Info</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li class="{{ (\Request::route()->getName() == '') ? 'active' : ''}}"><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Data Riset </a></li>
+          <li class="{{ (\Request::route()->getName() == '') ? 'active' : ''}}"><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Entrepeneur</a></li>
+          <li class="{{ (\Request::route()->getName() == '') ? 'active' : ''}}"><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Incubator</a></li>
+          <li class="{{ (\Request::route()->getName() == '') ? 'active' : ''}}"><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Mapres</a></li>
+        </ul>
+      </li>
       <li class="{{ (\Request::route()->getName() == 'users' || \Request::route()->getName() == 'jenis') ? 'active' : ''}}">
         <a href="#">
           <i class="fa fa-gear"></i> <span>Pengaturan</span>
         </a>
       </li>
-      <li class="treeview {{ (\Request::route()->getName() == '') ? 'active' : ''}}">
+
+      <!-- Sidebar untuk Alumni -->
+      <!-- <li class="treeview {{ (\Request::route()->getName() == '') ? 'active' : ''}}">
         <a href="#">
           <i class="fa fa-book"></i> <span>Akademik</span>
           <span class="pull-right-container">
@@ -229,7 +252,7 @@
         <a href="{{url('')}}">
           <i class="fa fa-bar-chart-o"></i> <span>Pembinaan</span>
         </a>
-      </li>
+      </li> -->
     </ul>
   </section>
   <!-- /.sidebar -->
