@@ -26,3 +26,7 @@
 /*.box.box-primary {
     border-top-color: #605ca8;
 }*/
+
+.navbar-nav>.user-menu>.dropdown-menu>li.user-header {
+	height: 200px !important;
+}

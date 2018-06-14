@@ -112,7 +112,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
               <!-- <i class="fa fa-user-circle" class="img-circle" style="font-size: 25px;"></i> -->
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs">{{Session::get('nama')}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -120,7 +120,9 @@
                 <img src="{{asset('admin/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
                 <!-- <i class="fa fa-user-circle" style="font-size: 70px; color: #fff;"></i> -->
                 <p>
-                  Alexander Pierce
+                  {{Session::get('nama')}} <br>
+                  {{Session::get('jurusan')}} <br>
+                  {{Session::get('angkatan')}}
                 </p>
               </li>
               <!-- Menu Body -->
@@ -131,7 +133,7 @@
                   <a href="#" class="btn btn-default"><i class="fa fa-user"></i> Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default"><i class="fa fa-power-off"></i> Logout</a>
+                  <a href="{{url('logout')}}" class="btn btn-default"><i class="fa fa-power-off"></i> Logout</a>
                 </div>
               </li>
             </ul>
@@ -150,11 +152,11 @@
     <!-- Sidebar user panel -->
     <div class="user-panel" style="min-height: 60px">
       <div class="pull-left image">
-          <img src="{{asset('admin/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+          <img src="{!!asset('upload/profile/').'/'.Session::get('foto')!!}" class="img-circle" alt="User Image">
           <!-- <i class="fa fa-user-circle" style="font-size: 50px;"></i> -->
         </div>
       <div class="pull-left info">
-        <p>{{Session::get('nama')}}Alexander Pierce </p>
+        <p>{{Session::get('nama')}}</p>
         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
     </div>
@@ -168,6 +170,7 @@
       </li>
 
       <!-- Sidebar untuk Admin -->
+      @if(Session::get('role') == 2)
       <li class="{{ (\Request::route()->getName() == 'alumni') ? 'active' : ''}}">
         <a href="{{url('alumni')}}">
           <i class="fa fa-users"></i> <span>Alumni</span>
@@ -180,7 +183,7 @@
       </li>
       <li class="{{ (\Request::route()->getName() == 'lowongan') ? 'active' : ''}}">
         <a href="{{url('lowongan')}}">
-          <i class="fa fa-file"></i> <span>Lowongan</span>
+          <i class="fa fa-newspaper-o"></i> <span>Lowongan</span>
         </a>
       </li>
       <li class="{{ (\Request::route()->getName() == 'beasiswa') ? 'active' : ''}}">
@@ -209,7 +212,8 @@
       </li>
 
       <!-- Sidebar untuk Alumni -->
-      <!-- <li class="treeview {{ (\Request::route()->getName() == '') ? 'active' : ''}}">
+      @elseif(Session::get('role') == 1)
+      <li class="treeview {{ (\Request::route()->getName() == '') ? 'active' : ''}}">
         <a href="#">
           <i class="fa fa-book"></i> <span>Akademik</span>
           <span class="pull-right-container">
@@ -252,7 +256,8 @@
         <a href="{{url('')}}">
           <i class="fa fa-bar-chart-o"></i> <span>Pembinaan</span>
         </a>
-      </li> -->
+      </li>
+      @endif
     </ul>
   </section>
   <!-- /.sidebar -->

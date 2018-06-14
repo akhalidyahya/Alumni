@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 
+use App\Alumni;
+
 class LoginController extends Controller
 {
     public function index()
@@ -16,19 +18,23 @@ class LoginController extends Controller
 
     public function login(request $request) {
       $username = $request['email'];
-      $password = md5($request['password']);
+      $password = $request['password'];
       $status = DB::table('admins')
-                    ->where('username',$username)
+                    ->where('email',$username)
                     ->where('password',$password)
                     ->count();
       if($status > 0) {
           $status = DB::table('admins')
-                        ->where('username',$username)
+                        ->where('email',$username)
                         ->where('password',$password)
                         ->get()
                         ->first();
+          $data = Alumni::where('email',$username)->get();
           $request->session()->put('id', $status->id);
           $request->session()->put('nama', $status->nama);
+          $request->session()->put('foto', $data[0]->foto);
+          $request->session()->put('jurusan', $data[0]->jurusan);
+          $request->session()->put('angkatan', $data[0]->angkatan);
           $request->session()->put('role', $status->role);
           $request->session()->put('login_status', true);
           return redirect('dashboard');
