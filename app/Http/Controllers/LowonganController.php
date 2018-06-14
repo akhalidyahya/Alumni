@@ -39,7 +39,21 @@ class LowonganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $img="defaultProfile.png";
+        if($request->hasFile('foto')){
+          $request->foto->move('upload/lowongan', $request->foto->getClientOriginalName());
+          $img = $request->foto->getClientOriginalName();
+        }
+        $data = [
+          'judul' => $request['judul'],
+          'lokasi' => $request['lokasi'],
+          'isi' => $request['isi'],
+          'kategori' => $request['kategori'],
+          'foto' => $img,
+          'alumni_id' => 3
+        ];
+
+        return Lowongan::create($data);
     }
 
     /**
@@ -73,7 +87,21 @@ class LowonganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $lowongan = Lowongan::find($id);
+        $lowongan->judul = $request['judul'];
+        $lowongan->lokasi = $request['lokasi'];
+        $lowongan->isi = $request['isi'];
+        $lowongan->kategori = $request['kategori'];
+
+        if($request->hasFile('foto')){
+          // if($kendaraan->foto != NULL) {
+          //   unlink($kendaraan->foto);
+          // }
+          $request->foto->move('upload/lowongan', $request->foto->getClientOriginalName());
+          $lowongan->foto = $request->foto->getClientOriginalName();
+        }
+
+        $lowongan->update();
     }
 
     /**
@@ -84,7 +112,7 @@ class LowonganController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Lowongan::destroy($id);
     }
 
     public function apilowongan()
@@ -96,6 +124,9 @@ class LowonganController extends Controller
         return DataTables::of($lowongan)
           ->addColumn('isi',function($lowongan){
             return strip_tags(substr($lowongan->isi,0,50)).' ...';
+          })
+          ->addColumn('judul',function($lowongan){
+            return strip_tags(substr($lowongan->judul,0,20)).' ...';
           })
           ->addColumn('aksi',function($lowongan){
             return '

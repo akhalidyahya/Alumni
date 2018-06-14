@@ -1,6 +1,6 @@
 <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
 
       <!-- Modal content-->
       <div class="modal-content">
@@ -9,7 +9,7 @@
           <h4 class="modal-title"></h4>
         </div>
         <div class="modal-body">
-          <form id="form-datascript" class="form-horizontal" action="{{url('lowongan')}}" method="post" enctype="multipart/form-data">
+          <form id="form-datascript" class="form-horizontal" action="" method="post" enctype="multipart/form-data">
             {{csrf_field()}} {{method_field('POST')}}
             <input type="hidden" name="id" id="id">
             <div class="form-group">
@@ -25,17 +25,19 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-3" for="barang">Description
+              <label class="control-label col-sm-3" for="barang">Description <br>
                 <label class="label label-danger">max 1000 char</label>
               </label>
               <div class="col-sm-9">
-                <textarea required name="isi" class="textarea form-control" id="isi" placeholder="max. 1000 char"></textarea>
+                <textarea required name="isi" class="textarea form-control ckeditor" id="isi" placeholder="max. 1000 char"></textarea>
+                <input type="hidden" name="isi_" id="isi_" value="">
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-3" for="barang">Gambar/poster</label>
               <div class="col-sm-9">
-                <input type="file" class="form-control" name="image">
+                <img id="gambar" src="" alt="" class="img-responsive">
+                <input type="file" class="form-control" name="foto">
               </div>
             </div>
             <div class="form-group">
@@ -68,7 +70,7 @@
   $(function () {
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
-    // CKEDITOR.replace('editor1')
-    $('.textarea').wysihtml5();
-  })
+    // CKEDITOR.replace('isi');
+    // $('.textarea').wysihtml5();
+  });
 </script>

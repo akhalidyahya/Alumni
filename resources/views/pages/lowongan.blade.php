@@ -79,6 +79,8 @@
     $('#myModal').modal('show');
     $('#myModal form')[0].reset();
     $('.modal-title').text('Post lowongan baru');
+    $('#gambar').attr("src","");
+    CKEDITOR.instances.isi.setData( "" );
   }
 
   var t = $('#table').DataTable({
@@ -106,7 +108,7 @@
     var csrf_token = $('meta[name="csrf_token"]').attr('content');
     if(popup == true) {
       $.ajax({
-        url: "{{ url('alumni') }}" + '/' + id,
+        url: "{{ url('lowongan') }}" + '/' + id,
         type: "POST",
         data: {'_method': 'DELETE','_token': csrf_token},
         success: function(data) {
@@ -136,12 +138,39 @@
         $('#judul').val(data.judul);
         $('#lokasi').val(data.lokasi);
         $('#kategori').val(data.kategori);
-        $('#isi').val(data.isi);
+        $('#gambar').attr("src","{{asset('upload/lowongan')}}" + "/" + data.foto);
+        CKEDITOR.instances.isi.setData( data.isi );
+        // $('#isi').val(data.isi);
       },
       error: function(){
         alert("something went wrong!");
       }
     });
   }
+
+  $('#submit').click(function(e){
+    e.preventDefault();
+    var id = $('#id').val();
+    if(save_method == 'add') url = "{{url('lowongan')}}";
+    else url = "{{url('lowongan').'/'}}" + id;
+    $('#isi').val(CKEDITOR.instances.isi.getData());
+
+    $.ajax({
+      url:url,
+      type:'POST',
+      // data: $('#myModal form').serialize(),
+      data: new FormData($('#myModal form')[0]),
+      contentType: false,
+      processData: false,
+      success: function($data){
+        $('#success').removeClass('hide');
+        $('#myModal').modal('hide');
+        t.ajax.reload();
+      },
+      error: function(){
+        $('#error').removeClass('hide');
+      }
+    });
+  });
 </script>
 @endsection

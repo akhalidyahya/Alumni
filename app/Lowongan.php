@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lowongan extends Model
 {
-    protected $fillable = ['judul','isi','foto','kategori','alumni_id'];
+    protected $fillable = ['judul','lokasi','isi','foto','kategori','alumni_id'];
 }
