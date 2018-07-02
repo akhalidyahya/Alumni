@@ -228,7 +228,7 @@
           <li class="{{ (\Request::route()->getName() == '') ? 'active' : ''}}"><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Mapres</a></li>
         </ul>
       </li>
-      <li class="treeview {{ (\Request::route()->getName() == '') ? 'active' : ''}}">
+      <li class="treeview {{ (\Request::route()->getName() == 'alumni') ? 'active' : ''}}">
         <a href="#">
           <i class="fa fa-users"></i> <span>Alumni</span>
           <span class="pull-right-container">
@@ -236,30 +236,30 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="{{ (\Request::route()->getName() == '') ? 'active' : ''}}"><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Profile</a></li>
+          <li class="{{ (\Request::route()->getName() == 'profile') ? 'active' : ''}}"><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Profile</a></li>
         </ul>
       </li>
-      <li class="{{ (\Request::route()->getName() == '') ? 'active' : ''}}">
+      <li class="{{ (\Request::route()->getName() == 'lowongan') ? 'active' : ''}}">
+        <a href="{{url('lowongan')}}">
+          <i class="fa fa-newspaper-o"></i> <span>Lowongan</span>
+        </a>
+      </li>
+      <li class="{{ (\Request::route()->getName() == 'beasiswa') ? 'active' : ''}}">
         <a href="{{url('')}}">
           <i class="fa fa-file"></i> <span>Beasiswa</span>
         </a>
       </li>
-      <li class="{{ (\Request::route()->getName() == '') ? 'active' : ''}}">
-        <a href="{{url('')}}">
-          <i class="fa fa-newspaper-o"></i> <span>Lowongan</span>
-        </a>
-      </li>
-      <li class="{{ (\Request::route()->getName() == '') ? 'active' : ''}}">
+      <li class="{{ (\Request::route()->getName() == 'mahasiswa') ? 'active' : ''}}">
         <a href="{{url('')}}">
           <i class="fa fa-user"></i> <span>Mahasiswa</span>
         </a>
       </li>
-      <li class="{{ (\Request::route()->getName() == '') ? 'active' : ''}}">
+      <li class="{{ (\Request::route()->getName() == 'syiar') ? 'active' : ''}}">
         <a href="{{url('')}}">
           <i class="fa fa-bullhorn"></i> <span>Syiar</span>
         </a>
       </li>
-      <li class="{{ (\Request::route()->getName() == '') ? 'active' : ''}}">
+      <li class="{{ (\Request::route()->getName() == 'pembinaan') ? 'active' : ''}}">
         <a href="{{url('')}}">
           <i class="fa fa-bar-chart-o"></i> <span>Pembinaan</span>
         </a>

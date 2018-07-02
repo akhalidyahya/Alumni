@@ -30,7 +30,7 @@ class LoginController extends Controller
                         ->get()
                         ->first();
           $data = Alumni::where('email',$username)->get();
-          $request->session()->put('id', $status->id);
+          $request->session()->put('id', $status->alumni_id);
           $request->session()->put('nama', $status->nama);
           $request->session()->put('foto', $data[0]->foto);
           $request->session()->put('jurusan', $data[0]->jurusan);

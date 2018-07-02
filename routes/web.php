@@ -70,3 +70,6 @@ Route::resource('lowongan','LowonganController',['names'=> [
   ]
 ]);
 Route::get('api/lowongan','LowonganController@apilowongan')->name('api.lowongan');
+Route::get('lowongan-konten',function(){
+  return view('pages/lowongan/konten');
+});

@@ -12,6 +12,25 @@
 	background-color: #464386;
 }*/
 
+.lowongan-container {
+	
+}
+
+.lowongan-content h3 {
+	margin-top: 0;
+	color: #f56954;
+}
+
+.lowongan-content p {
+	font-size: 16px;
+	letter-spacing: 1px;
+	color: #333 !important;
+}
+
+.lowongan-content .read-more {
+	color: #3c8dbc;
+}
+
 @media (max-width: 768px) {
 	.box-body {
 		overflow-x: auto;

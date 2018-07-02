@@ -48,7 +48,6 @@
         <a href="{{route('storing.export')}}" class=" btn btn-default" style=""><i class="fa fa-download"></i> Export</a>
       </div>
       <!-- END Export/Import Button -->
-
 		</div>
 		<!-- /.box-header -->
 		<div class="box-body">

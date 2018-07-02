@@ -16,9 +16,29 @@ class LowonganController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('pages/lowongan');
+        if($request->session()->has('login_status') != true) {
+           return redirect('login');
+        } else {
+             $role = $request->session()->get('role');
+            if ($role == 2) {
+              return view('pages/lowongan/admin');
+            }
+            elseif ($role == 1) {
+              $lowongan = DB::table('lowongans')
+                        ->leftjoin('alumnis','lowongans.alumni_id','=','alumnis.id')
+                        ->select('lowongans.*','alumnis.nama')
+                        ->orderBy('id','desc')
+                        ->get();
+              return view('pages/lowongan/alumni',[
+                'lowongan' => $lowongan
+              ]);
+            }
+            else {
+              return 'Under construction';
+            }
+        }
     }
 
     /**
@@ -50,7 +70,7 @@ class LowonganController extends Controller
           'isi' => $request['isi'],
           'kategori' => $request['kategori'],
           'foto' => $img,
-          'alumni_id' => 3
+          'alumni_id' => $request->session()->get('id')
         ];
 
         return Lowongan::create($data);
@@ -122,6 +142,9 @@ class LowonganController extends Controller
                   ->select('lowongans.*','alumnis.nama')
                   ->get();
         return DataTables::of($lowongan)
+          ->addColumn('created_at',function($lowongan){
+            return substr($lowongan->created_at,0,10);
+          })
           ->addColumn('isi',function($lowongan){
             return strip_tags(substr($lowongan->isi,0,50)).' ...';
           })
